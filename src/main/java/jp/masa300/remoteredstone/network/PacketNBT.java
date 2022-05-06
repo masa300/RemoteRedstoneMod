@@ -8,9 +8,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class PacketNBT implements IMessage {
-//    private static final byte Type_Entity = 0;
-//    private static final byte Type_TileEntity = 1;
-//    private static final byte Type_PlayerItem = 2;
     public NBTTagCompound nbtData;
 
     public PacketNBT() {
@@ -20,7 +17,6 @@ public class PacketNBT implements IMessage {
         this.nbtData = new NBTTagCompound();
         tileEntity.writeToNBT(this.nbtData);
         this.nbtData.setBoolean("ToClient", toClient);
-//        this.nbtData.setByte("DataType", Type_TileEntity);
         this.nbtData.setInteger("XPos", tileEntity.xCoord);
         this.nbtData.setInteger("YPos", tileEntity.yCoord);
         this.nbtData.setInteger("ZPos", tileEntity.zCoord);

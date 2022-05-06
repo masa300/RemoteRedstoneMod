@@ -43,7 +43,6 @@ public abstract class RemoteRedstone extends TileEntityCustom {
     @Override
     public void writeToNBT(NBTTagCompound nbt) {
         super.writeToNBT(nbt);
-        System.out.println("RemoteRedstone#writeToNBT: " + this.remoteRSId);
         nbt.setString("remoteRSId", this.remoteRSId);
     }
 }

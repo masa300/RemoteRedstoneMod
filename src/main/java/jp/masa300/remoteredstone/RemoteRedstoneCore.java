@@ -11,6 +11,8 @@ import cpw.mods.fml.relauncher.Side;
 import jp.masa300.remoteredstone.block.tileentity.TileEntityRSReceiver;
 import jp.masa300.remoteredstone.block.tileentity.TileEntityRSSender;
 import jp.masa300.remoteredstone.gui.RemoteRedstoneGUIHandler;
+import jp.masa300.remoteredstone.network.PacketNBT;
+import jp.masa300.remoteredstone.network.PacketNBTHandlerClient;
 import jp.masa300.remoteredstone.network.PacketRemoteRedstone;
 
 @Mod(modid = RemoteRedstoneCore.MODID, version = RemoteRedstoneCore.VERSION, name = RemoteRedstoneCore.MODID)
@@ -28,6 +30,7 @@ public class RemoteRedstoneCore {
     public void init(FMLInitializationEvent event) {
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new RemoteRedstoneGUIHandler());
         NETWORK_WRAPPER.registerMessage(PacketRemoteRedstone.class, PacketRemoteRedstone.class, 0, Side.SERVER);
+        NETWORK_WRAPPER.registerMessage(PacketNBTHandlerClient.class, PacketNBT.class, 1, Side.CLIENT);
         GameRegistry.registerTileEntity(TileEntityRSSender.class, "TE_RSSender");
         GameRegistry.registerTileEntity(TileEntityRSReceiver.class, "TE_RSReceiver");
     }

@@ -38,9 +38,6 @@ public class PacketRemoteRedstone extends PacketTileEntity implements IMessageHa
         World world = ctx.getServerHandler().playerEntity.worldObj;
         RemoteRedstone tile = (RemoteRedstone) message.getTileEntity(world);
         tile.setRemoteRSId(message.remoteRSId);
-
-//        NGTUtil.sendPacketToClient(tile);
-        System.out.println(tile.getRemoteRSId());
         RemoteRedstoneCore.NETWORK_WRAPPER.sendToAll(new PacketNBT(tile, true));
         tile.markDirty();
         return null;
